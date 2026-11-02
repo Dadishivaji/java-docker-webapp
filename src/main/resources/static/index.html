@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Docker Web Application</title>
+    <style>
+        body {
+            background: #eaf2ff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 60px 20px;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 650px;
+            margin: 30px auto;
+            box-shadow: 0 8px 24px rgba(0,0,0,.08);
+        }
+        h1 { color: #1565c0; }
+        button {
+            background: #1565c0;
+            color: white;
+            padding: 12px 24px;
+            border: 0;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        #result { overflow-wrap: anywhere; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Java Web Application</h1>
+        <h2>Docker Deployment Project</h2>
+        <p>Your Spring Boot application is running.</p>
+        <button onclick="checkServer()">Check Java Server</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        async function checkServer() {
+            const result = document.getElementById('result');
+            try {
+                const response = await fetch('/hello');
+                result.textContent = await response.text();
+            } catch (error) {
+                result.textContent = 'Could not connect to the Java server.';
+            }
+        }
+    </script>
+</body>
+</html>
